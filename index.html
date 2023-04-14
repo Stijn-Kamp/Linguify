@@ -9,29 +9,28 @@
     </head>
     <body>
         <nav>
-            <a class="title" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Google_Name.svg"  height="25"/>Translate</a>
+            <a class="title" href="#"><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Google_Name.svg"  height="25"/>Translate</a>
         </nav>
         <div id="background-line"></div>
         <div>
-            <table id="main-text-fields">
-                <tr>
-                    <td><textarea wrap="hard" id="txtInput" name="txtInput" onChange="procesText"></textarea>
-                    <td><textarea wrap="hard" id="txtOutput" name="txtOutput" placeholder="Translation"></textarea></td>
-                </tr>
-                <tr>
-                    <td><label id="lblCharCount"></label></td>
-                </tr>
-            </table> 
-
-            <div>
-            </div><br>
-            <button onclick="procesText()">Translate</button>
+            <div id="main">
+                <div class="text-display">
+                    <textarea wrap="hard" id="txtInput" name="txtInput" onChange="procesText"></textarea><br>
+                    <label id="lblCharCount"></label>
+                </div>
+                <div class="text-display">
+                    <textarea readonly wrap="hard" id="txtOutput" name="txtOutput" placeholder="Translation"></textarea>
+                </div><br>
+                <button onclick="procesText()">Translate</button>
+            </div>
         </div>
+        <div class="alert info">
+            <span id="btnClose" class="closebtn">Ready!</span>  
+            Character limit has been reached.
+        </div>          
         <footer>
-            <footer>
-                © 2021 Copyright
-                <a class="text-reset fw-bold" href="http://stijnkamp.com/">Stijn Kamp</a>
-            </footer>
+            © 2021 Copyright
+            <a class="text-reset fw-bold" href="http://stijnkamp.com/">Stijn Kamp</a>
         </footer>
     </body>
 </html>
