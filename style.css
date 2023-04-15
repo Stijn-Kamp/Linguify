@@ -26,6 +26,14 @@ footer {
 }
 
 #main {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.text-boxes {
+    display: flex;
+    justify-content: center;
     text-align: center;
     flex: 1 0 auto;
 }
@@ -33,7 +41,17 @@ footer {
 .text-display {
     display: inline-block;
     vertical-align: top;
+    border: solid 1px #cecece;
 }
+
+.text-display.left {
+    border-radius: 0 0 0 10px;
+}
+
+.text-display.right {
+    border-radius: 0 0 10px 0;
+}
+
 
 a {
     color: #5f6368;
@@ -50,8 +68,13 @@ input[type=text] {
     height: 80px;
 }
 
+
+textarea:focus {
+    outline: none;
+}
+
 textarea {
-    border: 1px solid #cecece;
+    border: none;
     height: 200px;
     width: 500px;
     font-size: 24px;
@@ -78,6 +101,20 @@ textarea {
 #lblCharCount {
     font-size: 12px;
     color: #5f6368;
+}
+
+.button {
+    background-color: #4285f4;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 /* Alerts */

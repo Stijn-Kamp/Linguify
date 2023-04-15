@@ -14,15 +14,17 @@
         <div id="background-line"></div>
         <div>
             <div id="main">
-                <div class="text-display">
-                    <textarea wrap="hard" id="txtInput" name="txtInput"></textarea><br>
-                    <label id="lblCharCount"></label>
+                <div class="text-boxes">
+                    <div class="text-display left">
+                        <textarea wrap="hard" id="txtInput" name="txtInput"></textarea><br>
+                        <label id="lblCharCount"></label>
+                    </div>
+                    <div class="text-display right">
+                        <textarea readonly wrap="hard" id="txtOutput" name="txtOutput" placeholder="Translation"></textarea>
+                    </div>
                 </div>
-                <div class="text-display">
-                    <textarea readonly wrap="hard" id="txtOutput" name="txtOutput" placeholder="Translation"></textarea>
-                </div><br>
-                <button onclick="procesText()">Translate</button>
             </div>
+            <button class="button translate" onclick="procesText()">Translate</button>
         </div>
         <div class="alert info">
             <span id="btnClose" class="closebtn">Done</span>  
