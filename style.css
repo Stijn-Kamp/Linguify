@@ -39,6 +39,7 @@ footer {
 }
 
 .text-display {
+    background: white;
     display: inline-block;
     vertical-align: top;
     border: solid 1px #cecece;
@@ -46,10 +47,12 @@ footer {
 
 .text-display.left {
     border-radius: 0 0 0 10px;
+    box-shadow: -1px 1px 3px 0px #cecece;
 }
 
 .text-display.right {
     border-radius: 0 0 10px 0;
+    box-shadow: 1px 1px 3px 0px #cecece;
 }
 
 
@@ -74,15 +77,15 @@ textarea:focus {
 }
 
 textarea {
+    background: inherit;
     border: none;
-    height: 200px;
+    min-height: 74px;
     width: 500px;
     font-size: 24px;
     font-family: inherit;
     resize: none;
-    padding: 10px;
+    padding: 25px;
     border-radius: 10px;
-    
 }
 
 
@@ -115,6 +118,18 @@ textarea {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.button.close {    
+    font-weight: bold;
+    background: transparent;
+    border-radius: 100px;
+    color: #5f6368;
+    aspect-ratio: 1;
+}
+
+.button.close:hover {
+    background: #cecece;
 }
 
 /* Alerts */

@@ -53,12 +53,32 @@ window.onload = function(e) {
     }
 };
 
+function copyTextHeight() {
+    var height = txtInput.style.height > txtOutput.style.height ? txtInput.style.height : txtOutput.style.height;
+    txtOutput.style.height = txtInput.style.height = height;
+}
+
+function clearTxtInput() {
+    txtInput.value = "";
+    txtInput.style.fontSize = fontMax + "px";
+    lblCharCount.innerText = "0 / " + charLimit;
+    copyTextHeight();
+}
+
+// Works but not very well
+function textAreaAdjust(element) {
+    element.style.height = "1px";
+    element.style.height = (20+element.scrollHeight)+"px";
+
+    copyTextHeight();
+}
+
 async function procesText() {
     txtInput = document.getElementById("txtInput");
     txtOutput = document.getElementById("txtOutput");
     txtOutput.value = "Translating...";
+    txtOutput.parentElement.style.background = "white";
     txtOutput.style.fontSize = fontMax + "px";
-    console.log(txtInput.value.replaceAll('\n', "\\n"));
     
     // replace \n with \\n in one line
     var translation = await fetch(url, {
@@ -87,5 +107,6 @@ async function procesText() {
         txtOutput.style.fontSize = fontMin + "px";
     }
 
+    txtOutput.parentElement.style.background = "#f5f5f5";
     txtOutput.value = translation.replaceAll('\\n', "\n");
 }
