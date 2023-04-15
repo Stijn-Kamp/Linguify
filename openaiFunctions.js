@@ -13,7 +13,7 @@ async function sendOpenAIprompt(prompt) {
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
-    max_tokens: 64,
+    max_tokens: 256,
     top_p: 1.0,
     frequency_penalty: 0.0,
     presence_penalty: 0.0,

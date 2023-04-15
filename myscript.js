@@ -61,7 +61,7 @@ function copyTextHeight() {
 }
 
 function clearTxtInput() {
-    txtInput.value = "";
+    txtOutput.value = txtInput.value = "";
     txtInput.style.fontSize = fontMax + "px";
     lblCharCount.innerText = "0 / " + charLimit;
     copyTextHeight();
@@ -82,6 +82,12 @@ async function procesText() {
     txtOutput.parentElement.style.background = "white";
     txtOutput.style.fontSize = fontMax + "px";
     
+    var text = txtInput.value;
+    text = text.replaceAll('\n', "\\n");
+    text = encodeURIComponent(text);
+
+    var to = ddlTranslateTo.value;
+    
     // replace \n with \\n in one line
     var translation = await fetch(url, {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
@@ -90,8 +96,8 @@ async function procesText() {
         credentials: "same-origin", // include, *same-origin, omit
         headers: {
           "Content-Type": "application/json",
-          "text": txtInput.value.replaceAll('\n', "\\n"),
-            "to": "Dutch"
+          "text": text,
+            "to": to
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
