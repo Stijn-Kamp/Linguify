@@ -9,7 +9,7 @@
     </head>
     <body>
         <nav>
-            <a class="title" href="#"><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Google_Name.svg"  height="25"/>Translate</a>
+            <a class="title" href="#"><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Google_Name.svg"  height="25"/>Linguify</a>
         </nav>
         <div id="background-line"></div>
         <div>
@@ -25,9 +25,16 @@
                     </div>
                 </div>
             </div>
+            <select id="ddlTo">
+                <option value="a text easily readable for children">Children</option>
+                <option value="a fairy tale, make sure it is easy to understand for childeren">Fairy tale</option>
+                <option value="a horror story">Horror</option>
+                <option value="a teen romance">Romance</option>
+                <option value="a disney musical">Musical</option>
+            </select>
             <button class="button translate" onclick="procesText()">Translate</button>
         </div>
-        <div class="alert info">
+        <div id="pnlAlert" class="alert info">
             <span id="btnClose" class="closebtn">Done</span>  
             2,048 character limit.       
         </div>          

@@ -8,9 +8,10 @@ const url = "http://127.0.0.1:5000/translate";
 var txtInput;
 var txtOutput;
 var lblCharCount;
+var ddlTranslateTo;
 
-var close;
-var alert;
+var btnClose;
+var pnlAlert;
 
 
 const charLimit = 2048;
@@ -23,16 +24,17 @@ window.onload = function(e) {
     txtInput = document.getElementById("txtInput");
     txtOutput = document.getElementById("txtOutput");
     lblCharCount = document.getElementById("lblCharCount");
-    close = document.getElementById("btnClose");
-    charLimitAlert = close.parentElement;
+    ddlTranslateTo = document.getElementById("ddlTo");
+    btnClose = document.getElementById("btnClose");
+    pnlAlert = document.getElementById("pnlAlert");
 
     const txtInputHandler = function(e) {
         var charCount = txtInput.value.length;
         var fontSize = charCount <= charBreak ? fontMax : fontMin;
 
         if (charCount > charLimit) {
-            charLimitAlert.style.display = "block";
-            charLimitAlert.style.opacity = "1";
+            pnlAlert.style.display = "block";
+            pnlAlert.style.opacity = "1";
             txtInput.value = txtInput.value.substring(0, charLimit);
             charCount = charLimit;
         }
