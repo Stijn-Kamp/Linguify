@@ -3,6 +3,8 @@
 // This is a simple JavaScript file
 // It will be loaded by the index.html file
 
+const url = "http://127.0.0.1:5000/translate"; 
+
 var txtInput;
 var txtOutput;
 var lblCharCount;
@@ -51,9 +53,39 @@ window.onload = function(e) {
     }
 };
 
-function procesText() {
+async function procesText() {
     txtInput = document.getElementById("txtInput");
     txtOutput = document.getElementById("txtOutput");
-    txtOutput.style.fontSize = txtInput.style.fontSize;
-    txtOutput.value = txtInput.value;
+    txtOutput.value = "Translating...";
+    txtOutput.style.fontSize = fontMax + "px";
+    console.log(txtInput.value.replaceAll('\n', "\\n"));
+    
+    // replace \n with \\n in one line
+    var translation = await fetch(url, {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          "text": txtInput.value.replaceAll('\n', "\\n"),
+            "to": "Dutch"
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      })
+      .then(res => {return res.text()}) // parses JSON response into native JavaScript objects
+      .catch(e => {
+        console.log(e);
+        return ""
+    }); // parses JSON response into native JavaScript objects
+      
+    // set font size of output text based on length of translation
+    if (translation.length == 0) {
+        translation = "Failed to translate.";
+    } else if(translation.length > charBreak) {
+        txtOutput.style.fontSize = fontMin + "px";
+    }
+
+    txtOutput.value = translation.replaceAll('\\n', "\n");
 }

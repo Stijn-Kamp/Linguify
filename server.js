@@ -1,8 +1,13 @@
 import express from 'express';
 import openaiFunctions from './openaiFunctions.js';
+import cors from 'cors';
 
 const app = express()
 const port = 5000
+
+app.use(cors({
+    // origin: 'http://127.0.0.1'
+}));
 
 // https://stackoverflow.com/questions/70009299/http-server-respnd-with-an-output-from-an-async-function
 app.get('/', (req, res) => {
@@ -18,8 +23,8 @@ app.get('/test', async (req, res) => {
 })
 
 app.get('/translate', async (req, res) => {
-    const text = req.query.text;
-    const to = req.query.to;
+    const text = req.headers['text'];
+    const to = req.headers['to'];
     const translatedText = await openaiFunctions.translateText(text, to); 
     res.send(translatedText);
 })
